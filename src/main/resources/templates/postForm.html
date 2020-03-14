@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 	<head>
-		<title>MyCodeBlog</title>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<title>MyCodeBlog</title>		
+    	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>    	
+    	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    	<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 	</head>
 
 	<body>
@@ -22,8 +28,8 @@
 				</nav>
 				
 				<div>
-					<form method="post">
-						
+					<th:block th:include="mensagemValidacao"></th:block>
+					<form method="post">						
 						<div class="form-group">
 							<input type="text" class="form-control" name="titulo" placeholder="Titulo *">
 						</div>
@@ -31,15 +37,26 @@
 						<div class="form-group">
 							<input type="text" class="form-control" name="autor" placeholder="Autor *">
 						</div>
-						
-						<textarea type="text" class="form-control" name="texto" placeholder="Texto *"></textarea>
+												
+						<textarea id="summernote" type="text" class="form-control" name="texto" placeholder="Texto *"></textarea>
 						
 						<small class="form-text text-muted">( * ) Campos obrigatorios</small>
+						
 						<button type="submit" class="btn btn-outline-primary" style="margin-top: 10px;">Publicar</button>
+						
 						<a href="/posts" class="btn btn-outline-secondary" role="button" style="margin-top: 10px;">Cancelar</a>
 					</form>
 				</div>
 			</div>
 		</section>
+		
+		<script>
+    		$('#summernote').summernote({
+        		placeholder: 'Texto *',
+        		tabsize: 2,
+        		height: 300
+    		});
+		</script>
+		
 	</body>
 </html>
